@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { CodeBlock } from '@/app/components/ui/CodeBlock'
+import { CodeBlock } from '@/app/components/CodeBlock'
 
 interface TypingAnimationProps {
   text: string
