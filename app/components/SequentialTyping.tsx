@@ -1,15 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { CodeBlock } from '@/app/components/ui/CodeBlock'
+import type { TextItem } from '@/app/types'
 
-export interface TextItem {
-  text: string
-  className?: string
-  isCodeBlock?: boolean
-  persist?: boolean
-  speed?: number
-  pauseBetween?: number
-}
+export type { TextItem }
 
 interface SequentialTypingProps {
   items: TextItem[]
@@ -36,7 +31,6 @@ export default function SequentialTyping({
       return
     }
 
-    // Typing animation for current item
     if (currentCharIndex < currentItem.text.length) {
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + currentItem.text[currentCharIndex])
@@ -46,7 +40,6 @@ export default function SequentialTyping({
       return () => clearTimeout(timeout)
     }
 
-    // Current item complete, move to next
     if (
       currentCharIndex === currentItem.text.length &&
       currentItemIndex < items.length - 1
@@ -71,14 +64,11 @@ export default function SequentialTyping({
   return (
     <>
       {items.map((item, index) => {
-        // Only show items that should persist and have been completed
         if (item.persist && index < currentItemIndex) {
           return (
             <div key={index}>
               {item.isCodeBlock ? (
-                <pre className="bg-zinc-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto border border-zinc-700">
-                  <code>{item.text}</code>
-                </pre>
+                <CodeBlock>{item.text}</CodeBlock>
               ) : (
                 <p className={item.className || 'text-center'}>
                   <em>{item.text}</em>
@@ -88,17 +78,14 @@ export default function SequentialTyping({
           )
         }
 
-        // Show currently typing item
         if (index === currentItemIndex) {
           return (
             <div key={index}>
               {item.isCodeBlock ? (
-                <pre className="bg-zinc-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto border border-zinc-700">
-                  <code>
-                    {displayedText}
-                    <span className="animate-pulse">▋</span>
-                  </code>
-                </pre>
+                <CodeBlock>
+                  {displayedText}
+                  <span className="animate-pulse">▋</span>
+                </CodeBlock>
               ) : (
                 <p className={item.className || 'text-center'}>
                   <em>

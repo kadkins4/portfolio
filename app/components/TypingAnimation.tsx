@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { CodeBlock } from '@/app/components/ui/CodeBlock'
 
 interface TypingAnimationProps {
   text: string
@@ -26,11 +27,9 @@ export default function TypingAnimation({
   }, [currentIndex, text, speed])
 
   return (
-    <pre className="bg-zinc-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto border border-zinc-700">
-      <code>
-        {displayedText}
-        <span className="animate-pulse">▋</span>
-      </code>
-    </pre>
+    <CodeBlock>
+      {displayedText}
+      <span className="animate-pulse">▋</span>
+    </CodeBlock>
   )
 }

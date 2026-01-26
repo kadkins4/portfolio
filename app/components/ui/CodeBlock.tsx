@@ -9,7 +9,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
   return (
     <pre
       className={cn(
-        'bg-code-bg text-code-fg p-4 rounded-lg font-mono text-sm overflow-x-auto border border-code-border',
+        'bg-code-bg text-code-text p-4 rounded-lg font-mono text-sm overflow-x-auto border border-code-border',
         className
       )}
     >

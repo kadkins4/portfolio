@@ -8,7 +8,7 @@ export default {
       colors: {
         code: {
           bg: 'var(--code-bg)',
-          fg: 'var(--code-fg)',
+          text: 'var(--code-text)',
           border: 'var(--code-border)',
         },
       },
