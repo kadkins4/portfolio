@@ -10,17 +10,17 @@ Personal portfolio website for kendalladkins.dev featuring blog posts, project s
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Framework | Next.js 15 (App Router) |
-| Language | TypeScript |
-| Styling | Tailwind CSS + next-themes |
-| Content | MDX (next-mdx-remote) + Shiki syntax highlighting |
-| Auth | Auth.js v5 + GitHub OAuth (single-user allowlist) |
-| Database | Vercel Postgres |
-| Rate Limiting | Vercel KV |
-| Email | Resend |
-| Hosting | Vercel |
+| Layer         | Technology                                        |
+| ------------- | ------------------------------------------------- |
+| Framework     | Next.js 15 (App Router)                           |
+| Language      | TypeScript                                        |
+| Styling       | Tailwind CSS + next-themes                        |
+| Content       | MDX (next-mdx-remote) + Shiki syntax highlighting |
+| Auth          | Auth.js v5 + GitHub OAuth (single-user allowlist) |
+| Database      | Vercel Postgres                                   |
+| Rate Limiting | Vercel KV                                         |
+| Email         | Resend                                            |
+| Hosting       | Vercel                                            |
 
 ## Build Commands
 
@@ -55,31 +55,33 @@ lib/                      # Utilities (mdx, auth, db, email, github)
 ## Content Conventions
 
 ### Blog Post Frontmatter
+
 ```yaml
-title: "Post Title"
-date: "2024-01-15"
-description: "SEO description"
-tags: ["typescript", "react"]
+title: 'Post Title'
+date: '2024-01-15'
+description: 'SEO description'
+tags: ['typescript', 'react']
 published: true
-series: "series-slug"       # Optional
+series: 'series-slug' # Optional
 seriesOrder: 2
-relatedPosts: ["slug-1"]    # Manual related posts
-badges: ["new", "popular"]
-readingLevel: "intermediate"
+relatedPosts: ['slug-1'] # Manual related posts
+badges: ['new', 'popular']
+readingLevel: 'intermediate'
 ```
 
 ### Project Frontmatter
+
 ```yaml
-title: "Project Name"
-description: "What this does"
-category: "software"        # software | professional | personal | learning
-status: "completed"         # idea | in-progress | completed | archived
-tech: ["React", "TypeScript"]
-github: "https://github.com/..."
-live: "https://..."
+title: 'Project Name'
+description: 'What this does'
+category: 'software' # software | professional | personal | learning
+status: 'completed' # idea | in-progress | completed | archived
+tech: ['React', 'TypeScript']
+github: 'https://github.com/...'
+live: 'https://...'
 featured: true
 published: true
-techBadges: true           # Auto-generate badges from tech array
+techBadges: true # Auto-generate badges from tech array
 ```
 
 ## Authentication Pattern

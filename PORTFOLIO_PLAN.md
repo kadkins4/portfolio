@@ -8,24 +8,25 @@ A personal portfolio website for Kendall Adkins - a multi-purpose site featuring
 
 ## Tech Stack
 
-| Layer | Technology | Rationale |
-|-------|------------|-----------|
-| Framework | **Next.js 15** (App Router) | React 19 support, async params, improved caching, excellent Vercel integration |
-| Language | **TypeScript** | Type safety, better DX |
-| Styling | **Tailwind CSS** | Rapid development, theme support, developer-friendly utility classes |
-| Theming | **next-themes** | Handles dark/light mode with system preference detection |
-| Content | **MDX** | Markdown with React components, syntax highlighting, frontmatter metadata |
-| Auth | **Auth.js v5 + GitHub OAuth** | Latest version, simplified setup, middleware-based protection |
-| Hosting | **Vercel** | Zero-config deploys, edge functions, analytics |
-| Database | **Vercel Postgres** | Native Vercel integration, serverless-friendly, sufficient for low-traffic personal site |
-| Email | **Resend** | Transactional emails for contact notifications (100/day free) |
-| Icons | **simple-icons** | Technology logo badges |
+| Layer     | Technology                    | Rationale                                                                                |
+| --------- | ----------------------------- | ---------------------------------------------------------------------------------------- |
+| Framework | **Next.js 15** (App Router)   | React 19 support, async params, improved caching, excellent Vercel integration           |
+| Language  | **TypeScript**                | Type safety, better DX                                                                   |
+| Styling   | **Tailwind CSS**              | Rapid development, theme support, developer-friendly utility classes                     |
+| Theming   | **next-themes**               | Handles dark/light mode with system preference detection                                 |
+| Content   | **MDX**                       | Markdown with React components, syntax highlighting, frontmatter metadata                |
+| Auth      | **Auth.js v5 + GitHub OAuth** | Latest version, simplified setup, middleware-based protection                            |
+| Hosting   | **Vercel**                    | Zero-config deploys, edge functions, analytics                                           |
+| Database  | **Vercel Postgres**           | Native Vercel integration, serverless-friendly, sufficient for low-traffic personal site |
+| Email     | **Resend**                    | Transactional emails for contact notifications (100/day free)                            |
+| Icons     | **simple-icons**              | Technology logo badges                                                                   |
 
 ---
 
 ## Core Features (MVP)
 
 ### 1. Homepage / Landing
+
 - Hero section with name, title, brief intro
 - Terminal-style typing animation or ASCII art accent
 - Dev Skills Section (Visual Sneak Peek)
@@ -34,12 +35,14 @@ A personal portfolio website for Kendall Adkins - a multi-purpose site featuring
 - Featured projects grid (with tech badges)
 
 ### 2. About Page
+
 - Professional bio and background
 - Skills/technologies (visual display with badges)
 - Work history timeline (pulled from content or LinkedIn data)
 - Contact information / social links
 
 ### 3. Blog System
+
 - MDX-powered posts stored in `/content/blog/`
 - Frontmatter: title, date, tags, description, published status, badges, series
 - Syntax highlighting (Shiki or Prism)
@@ -53,6 +56,7 @@ A personal portfolio website for Kendall Adkins - a multi-purpose site featuring
 - **Table of contents for long posts**
 
 ### Image Handling
+
 - **Storage**: `/public/images/blog/{post-slug}/` for blog images
 - **Optimization**: Use Next.js `<Image>` component via custom MDX component
 - **MDX usage**: `![Alt text](./image.png)` resolves to post's image folder
@@ -60,6 +64,7 @@ A personal portfolio website for Kendall Adkins - a multi-purpose site featuring
 - **OG images**: Generated at build time using `@vercel/og` (Phase 4)
 
 ### 4. Projects Showcase
+
 - Grid/list view of projects
 - Categories: Software, Professional, Personal, Learning
 - Project cards with: title, description, **tech stack badges**, links (GitHub, live demo)
@@ -71,11 +76,13 @@ A personal portfolio website for Kendall Adkins - a multi-purpose site featuring
   - Priority/effort estimates
 
 ### 5. Interests/Personal Section
+
 - Showcase hobbies, interests outside of code
 - Photo galleries, collections, etc.
 - Flexible MDX-based content
 
 ### 6. Contact Page
+
 - Contact form with fields: Name, Email, Subject (dropdown), Message
 - Honeypot field for spam prevention
 - Rate limiting to prevent abuse
@@ -88,6 +95,7 @@ A personal portfolio website for Kendall Adkins - a multi-purpose site featuring
   - Sync to Obsidian via GitHub repo
 
 ### 7. Badge System
+
 - **Tech badges**: Technology icons (React, TypeScript, Python, etc.)
 - **Status badges**: New, Updated, Popular, WIP, Archived
 - **Content badges**: Series, Tutorial, Deep Dive, Quick Tip
@@ -95,6 +103,7 @@ A personal portfolio website for Kendall Adkins - a multi-purpose site featuring
 - Filterable on listing pages
 
 ### 8. Theme System
+
 - **Dark mode** (default) - developer-focused aesthetic
 - **Light mode** - clean, accessible for daytime reading
 - System preference detection on first visit
@@ -103,11 +112,13 @@ A personal portfolio website for Kendall Adkins - a multi-purpose site featuring
 - **V2**: Sepia and High Contrast themes
 
 ### 9. Authentication (Hybrid)
+
 - GitHub OAuth login (only you can authenticate)
 - Public visitors see: published blog posts, public project showcases
 - Authenticated (you) see: draft posts, private project notes, status tracking, admin controls
 
 ### Auth Restriction Implementation
+
 GitHub OAuth is restricted to a single user via allowlist:
 
 ```typescript
@@ -130,21 +141,24 @@ callbacks: {
 **Required env var:** `ALLOWED_GITHUB_USER_ID` - Find via `gh api user --jq '.id'`
 
 ### 10. Integrations
+
 - **GitHub**: Display pinned repos, contribution graph, recent activity
 - **LinkedIn**: Link to profile (API is restrictive, so likely just links)
 - **Dev.to/Medium**: Cross-posting support via frontmatter flags or manual sync
 - **Obsidian**: Contact submissions synced as markdown files
 
 ### Cross-posting Workflow
+
 Blog posts can be cross-posted to Dev.to via frontmatter flags:
 
 ```yaml
 crossPost:
-  devto: true      # Queue for Dev.to
-  medium: false    # Skip Medium
+  devto: true # Queue for Dev.to
+  medium: false # Skip Medium
 ```
 
 **Implementation (Phase 4):**
+
 1. Manual workflow (MVP): Export script generates Dev.to-compatible markdown
 2. Script sets `canonical_url` pointing back to portfolio site
 3. Run `pnpm crosspost` to generate files in `dist/crosspost/`
@@ -252,6 +266,7 @@ portfolio/
 ## Design System
 
 ### Color Palette - Dark Mode (Default)
+
 ```
 Background:     #0a0a0a (near black)
 Surface:        #141414 (elevated surfaces)
@@ -263,6 +278,7 @@ Accent Alt:     #3b82f6 (blue for links/interactive)
 ```
 
 ### Color Palette - Light Mode
+
 ```
 Background:     #fafafa (clean white)
 Surface:        #ffffff (cards/elevated)
@@ -274,6 +290,7 @@ Accent Alt:     #2563eb (blue for links)
 ```
 
 ### Color Palette - Sepia Mode (V2)
+
 ```
 Background:     #f4ecd8 (warm cream)
 Surface:        #faf6eb (light parchment)
@@ -285,6 +302,7 @@ Accent Alt:     #7c5e2a (warm amber for links)
 ```
 
 ### Color Palette - High Contrast Mode (V2)
+
 ```
 Background:     #000000 (pure black)
 Surface:        #1a1a1a (near black)
@@ -296,11 +314,13 @@ Accent Alt:     #00ffff (cyan for links)
 ```
 
 ### Typography
+
 - **Headings**: JetBrains Mono or Fira Code (monospace)
 - **Body**: Inter or system-ui (readable sans-serif)
 - **Code blocks**: JetBrains Mono with syntax highlighting
 
 ### Badge Styles
+
 ```
 Tech badges:    Colored by technology brand colors
 Status badges:
@@ -314,6 +334,7 @@ Level badges:   Gradient (green → yellow → red by difficulty)
 ```
 
 ### Components Style
+
 - Subtle borders, low contrast separation
 - Terminal-inspired elements (command prompts, ASCII decorations)
 - Smooth micro-interactions (hover states, transitions)
@@ -325,20 +346,21 @@ Level badges:   Gradient (green → yellow → red by difficulty)
 ## Data Models
 
 ### Blog Post Frontmatter
+
 ```yaml
 ---
-title: "Post Title"
-date: "2024-01-15"
-description: "Brief description for SEO and previews"
-tags: ["typescript", "react", "tutorial"]
+title: 'Post Title'
+date: '2024-01-15'
+description: 'Brief description for SEO and previews'
+tags: ['typescript', 'react', 'tutorial']
 published: true
 # Linking & Series
-series: "building-a-cli"        # Optional: series slug
-seriesOrder: 2                  # Position in series
-relatedPosts: ["slug-1", "slug-2"]  # Manual related posts
+series: 'building-a-cli' # Optional: series slug
+seriesOrder: 2 # Position in series
+relatedPosts: ['slug-1', 'slug-2'] # Manual related posts
 # Badges
-badges: ["new", "popular"]      # Status badges
-readingLevel: "intermediate"    # beginner/intermediate/advanced
+badges: ['new', 'popular'] # Status badges
+readingLevel: 'intermediate' # beginner/intermediate/advanced
 # Cross-posting
 crossPost:
   devto: true
@@ -347,6 +369,7 @@ crossPost:
 ```
 
 ### Project Frontmatter
+
 ```yaml
 ---
 title: "Project Name"
@@ -367,19 +390,23 @@ techBadges: true               # Auto-generate tech stack badges
 ```
 
 ### Series Metadata
+
 ```yaml
 # content/data/series.json or in individual posts
 {
-  "building-a-cli": {
-    "title": "Building a CLI from Scratch",
-    "description": "Learn to build a production CLI tool",
-    "posts": ["cli-part-1", "cli-part-2", "cli-part-3"]
-  }
+  'building-a-cli':
+    {
+      'title': 'Building a CLI from Scratch',
+      'description': 'Learn to build a production CLI tool',
+      'posts': ['cli-part-1', 'cli-part-2', 'cli-part-3'],
+    },
 }
 ```
 
 ### Series Resolution Strategy
+
 The series system uses a **post-first approach**:
+
 1. Series membership is defined in each post's frontmatter (`series`, `seriesOrder`)
 2. `content/data/series.json` provides **display metadata only** (title, description)
 3. At build time, posts are aggregated by `series` slug to generate series pages
@@ -388,30 +415,32 @@ The series system uses a **post-first approach**:
 This avoids keeping two sources in sync - posts are authoritative for membership, JSON is optional enrichment.
 
 ### Private Project Data (Database)
+
 ```typescript
 interface ProjectPrivateData {
-  slug: string;
-  notes: string;           // Private notes/todos
-  priority: 'low' | 'medium' | 'high';
-  effort: 'small' | 'medium' | 'large';
-  privateStatus: string;   // Custom status notes
-  updatedAt: Date;
+  slug: string
+  notes: string // Private notes/todos
+  priority: 'low' | 'medium' | 'high'
+  effort: 'small' | 'medium' | 'large'
+  privateStatus: string // Custom status notes
+  updatedAt: Date
 }
 ```
 
 ### Contact Submission (Database)
+
 ```typescript
 interface ContactSubmission {
-  id: string;
-  name: string;
-  email: string;
-  subject: 'general' | 'project' | 'collaboration' | 'other';
-  message: string;
-  source: 'contact-form' | 'project-inquiry';
-  projectSlug?: string;        // If from project page
-  createdAt: Date;
-  syncedToObsidian: boolean;
-  obsidianPath?: string;
+  id: string
+  name: string
+  email: string
+  subject: 'general' | 'project' | 'collaboration' | 'other'
+  message: string
+  source: 'contact-form' | 'project-inquiry'
+  projectSlug?: string // If from project page
+  createdAt: Date
+  syncedToObsidian: boolean
+  obsidianPath?: string
 }
 ```
 
@@ -420,6 +449,7 @@ interface ContactSubmission {
 ## Implementation Phases
 
 ### Phase 1: Foundation (MVP)
+
 1. Initialize Next.js 15 project with TypeScript
 2. Set up Tailwind CSS with dual theme configuration
 3. Install and configure `next-themes`
@@ -438,6 +468,7 @@ interface ContactSubmission {
 16. Deploy to Vercel
 
 ### Phase 2: Projects & Content
+
 1. Build projects showcase page with tech badges
 2. Create project detail pages with MDX
 3. Add About page
@@ -447,6 +478,7 @@ interface ContactSubmission {
 7. Add GitHub integration (pinned repos, activity)
 
 ### Phase 3: Authentication & Private Features
+
 1. Configure Auth.js v5 with GitHub OAuth
 2. Expand database schema for private project data
 3. Build private dashboard
@@ -457,6 +489,7 @@ interface ContactSubmission {
 8. Implement Obsidian sync for contacts (via GitHub)
 
 ### Phase 4: Polish & Integrations
+
 1. Add command palette (⌘K) for site navigation
 2. Add micro-interactions and animations
 3. Add RSS feed generation
@@ -484,6 +517,7 @@ interface ContactSubmission {
 ## Future Iterations
 
 ### V2 Enhancements
+
 - **Visitor Achievements System**
   - Track: pages visited, posts read, time on site, series completed
   - Award badges: "Night Owl" (visited at 2am), "Completionist" (read full series), "Explorer" (visited all sections)
@@ -501,6 +535,7 @@ interface ContactSubmission {
 - **Analytics dashboard**: Private stats on post performance
 
 ### V3 Expansions
+
 - **Series/courses**: Group blog posts into learning paths with progress tracking
 - **Quizzes/exercises**: Interactive elements between series posts
 - **Completion certificates**: Fun, shareable completion badges
@@ -513,7 +548,7 @@ interface ContactSubmission {
 
 ## Contact System Architecture
 
-```
+````
 User submits form
        ↓
    API Route (/api/contact)
@@ -548,8 +583,9 @@ Obsidian Sync (Phase 3):
   ---
 
   {{message}}
-  ```
-```
+````
+
+````
 
 ---
 
@@ -610,18 +646,18 @@ Obsidian Sync (Phase 3):
   "simple-icons": "^11.x",
   "cmdk": "^1.x"
 }
-```
+````
 
 ---
 
 ## Estimated Scope
 
-| Phase | Scope |
-|-------|-------|
+| Phase   | Scope                                                    |
+| ------- | -------------------------------------------------------- |
 | Phase 1 | Core site, blog, themes, badges, contact, series support |
-| Phase 2 | Projects, about, integrations, search |
-| Phase 3 | Auth, database, private features, Obsidian sync |
-| Phase 4 | Polish, SEO, analytics, command palette |
+| Phase 2 | Projects, about, integrations, search                    |
+| Phase 3 | Auth, database, private features, Obsidian sync          |
+| Phase 4 | Polish, SEO, analytics, command palette                  |
 
 ---
 
@@ -642,6 +678,7 @@ Obsidian Sync (Phase 3):
 ## Environment Variables
 
 ### Required
+
 ```bash
 # Auth.js
 AUTH_SECRET=                     # Generate: openssl rand -base64 32
@@ -658,6 +695,7 @@ CONTACT_EMAIL=                   # Email to receive contact notifications
 ```
 
 ### Optional
+
 ```bash
 # Obsidian Sync
 OBSIDIAN_GITHUB_TOKEN=           # PAT with repo write access
@@ -675,6 +713,7 @@ NEXT_PUBLIC_SITE_URL=            # Production URL for OG images, canonical URLs
 ## Next Steps
 
 Upon plan approval:
+
 1. Initialize the Next.js project
 2. Set up the base configuration (Tailwind, TypeScript, ESLint, next-themes)
 3. Create the foundational layout components with theme support

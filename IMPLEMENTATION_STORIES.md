@@ -12,9 +12,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ## Epic 1: Infrastructure & Prerequisites (7 stories)
 
 ### INFRA-001: Create Vercel Account & Project
+
 **Description**: Set up Vercel account and create the portfolio project for deployment.
 
 **Acceptance Criteria**:
+
 - [ ] Vercel account created
 - [ ] New project created named "portfolio" or "kendalladkins-dev"
 - [ ] GitHub repo connected for automatic deployments
@@ -23,9 +25,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### INFRA-002: Create GitHub OAuth Application
+
 **Description**: Register a GitHub OAuth app for authentication.
 
 **Acceptance Criteria**:
+
 - [ ] OAuth app created at github.com/settings/developers
 - [ ] Client ID and Secret generated
 - [ ] Callback URL set to `http://localhost:3000/api/auth/callback/github` (dev)
@@ -35,9 +39,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### INFRA-003: Provision Vercel Postgres Database
+
 **Description**: Create a Vercel Postgres database for storing contacts and private data.
 
 **Acceptance Criteria**:
+
 - [ ] Database created in Vercel dashboard (Storage → Create → Postgres)
 - [ ] Connection string obtained
 - [ ] Environment variable `POSTGRES_URL` documented
@@ -45,9 +51,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### INFRA-004: Provision Vercel KV Store
+
 **Description**: Create a Vercel KV store for rate limiting.
 
 **Acceptance Criteria**:
+
 - [ ] KV store created in Vercel dashboard (Storage → Create → KV)
 - [ ] Connection details obtained
 - [ ] Environment variables documented (`KV_URL`, `KV_REST_API_URL`, etc.)
@@ -55,9 +63,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### INFRA-005: Create Resend Account & API Key
+
 **Description**: Set up Resend for transactional email notifications.
 
 **Acceptance Criteria**:
+
 - [ ] Resend account created at resend.com
 - [ ] Domain verified (or use resend.dev for testing)
 - [ ] API key generated
@@ -66,18 +76,22 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### INFRA-006: Get GitHub User ID
+
 **Description**: Retrieve your numeric GitHub user ID for auth restriction.
 
 **Acceptance Criteria**:
+
 - [ ] Run `gh api user --jq '.id'` to get numeric ID
 - [ ] Document as `ALLOWED_GITHUB_USER_ID`
 
 ---
 
 ### INFRA-007: Create Local Environment File Template
+
 **Description**: Create `.env.example` template with all required variables.
 
 **Acceptance Criteria**:
+
 - [ ] `.env.example` created with placeholders for all env vars
 - [ ] `.env.local` added to `.gitignore`
 - [ ] README updated with environment setup instructions
@@ -87,20 +101,24 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ## Epic 2: Project Foundation (6 stories)
 
 ### FOUND-001: Initialize Next.js 15 Project
+
 **Description**: Create the Next.js 15 project with TypeScript and pnpm.
 
 **Acceptance Criteria**:
-- [ ] Run `pnpm create next-app@latest` with App Router, TypeScript, Tailwind, ESLint
-- [ ] Project starts with `pnpm dev`
-- [ ] TypeScript compiles without errors
-- [ ] Default page renders at localhost:3000
+
+- [x] Run `pnpm create next-app@latest` with App Router, TypeScript, Tailwind, ESLint, Prettier
+- [x] Project starts with `pnpm dev`
+- [x] TypeScript compiles without errors
+- [x] Default page renders at localhost:3000
 
 ---
 
 ### FOUND-002: Configure Tailwind with Theme Variables
+
 **Description**: Set up Tailwind CSS with custom color palette and CSS variables for theming.
 
 **Acceptance Criteria**:
+
 - [ ] `tailwind.config.ts` extended with custom colors
 - [ ] CSS variables defined in `globals.css` for dark/light themes
 - [ ] Typography plugin installed (`@tailwindcss/typography`)
@@ -109,9 +127,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### FOUND-003: Install and Configure next-themes
+
 **Description**: Set up next-themes for dark/light mode switching.
 
 **Acceptance Criteria**:
+
 - [ ] `next-themes` package installed
 - [ ] ThemeProvider wrapper created
 - [ ] Default theme set to "dark"
@@ -121,9 +141,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### FOUND-004: Create Root Layout with Theme Provider
+
 **Description**: Build the root layout component with theme support and metadata.
 
 **Acceptance Criteria**:
+
 - [ ] `app/layout.tsx` wraps children with ThemeProvider
 - [ ] Metadata configured (title, description)
 - [ ] Font loading optimized
@@ -132,9 +154,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### FOUND-005: Set Up Project Directory Structure
+
 **Description**: Create the folder structure for components, lib, content, and styles.
 
 **Acceptance Criteria**:
+
 - [ ] `components/` with subdirectories: ui, layout, blog, mdx, contact
 - [ ] `lib/` directory created
 - [ ] `content/` with subdirectories: blog, projects, data
@@ -143,9 +167,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### FOUND-006: Configure ESLint and Prettier
+
 **Description**: Set up consistent code formatting and linting rules.
 
 **Acceptance Criteria**:
+
 - [ ] ESLint config extended with recommended rules
 - [ ] Prettier installed and configured
 - [ ] Scripts added: `pnpm lint`, `pnpm format`
@@ -156,9 +182,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ## Epic 3: Layout & Navigation (6 stories)
 
 ### LAYOUT-001: Create Header Component
+
 **Description**: Build the site header with logo, navigation links, and theme toggle slot.
 
 **Acceptance Criteria**:
+
 - [ ] Header component in `components/layout/Header.tsx`
 - [ ] Logo/site name linking to home
 - [ ] Navigation links: Blog, Projects, About, Contact
@@ -169,9 +197,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### LAYOUT-002: Create Footer Component
+
 **Description**: Build the site footer with copyright, social links, and site info.
 
 **Acceptance Criteria**:
+
 - [ ] Footer component in `components/layout/Footer.tsx`
 - [ ] Copyright with current year
 - [ ] Social links (GitHub, LinkedIn, etc.)
@@ -181,9 +211,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### LAYOUT-003: Create ThemeToggle Component
+
 **Description**: Build the theme toggle button with sun/moon icons.
 
 **Acceptance Criteria**:
+
 - [ ] ThemeToggle in `components/ui/ThemeToggle.tsx`
 - [ ] Uses `useTheme` hook from next-themes
 - [ ] Displays sun icon for dark mode, moon for light
@@ -194,9 +226,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### LAYOUT-004: Create Main Layout Wrapper
+
 **Description**: Build a consistent page layout wrapper with Header and Footer.
 
 **Acceptance Criteria**:
+
 - [ ] Layout includes Header, main content area, Footer
 - [ ] Main content has max-width container
 - [ ] Proper spacing and padding
@@ -205,9 +239,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### LAYOUT-005: Implement Mobile Navigation Menu
+
 **Description**: Create responsive mobile menu with hamburger toggle.
 
 **Acceptance Criteria**:
+
 - [ ] Hamburger button visible on mobile breakpoints
 - [ ] Menu slides/fades in when opened
 - [ ] Menu closes on link click or outside click
@@ -217,21 +253,25 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### LAYOUT-006: Add Active Link Highlighting
+
 **Description**: Highlight the current page in navigation.
 
 **Acceptance Criteria**:
+
 - [ ] Use `usePathname` to detect current route
 - [ ] Active link has distinct styling (underline, color)
-- [ ] Works for nested routes (e.g., /blog/*)
+- [ ] Works for nested routes (e.g., /blog/\*)
 
 ---
 
 ## Epic 4: Badge System (4 stories)
 
 ### BADGE-001: Create Base Badge Component
+
 **Description**: Build the core Badge component with variants.
 
 **Acceptance Criteria**:
+
 - [ ] Badge component in `components/ui/Badge.tsx`
 - [ ] Props: label, variant, size, icon (optional)
 - [ ] Variants: tech, status, content, level
@@ -242,9 +282,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BADGE-002: Create Tech Badge Data Configuration
+
 **Description**: Set up tech badge definitions with brand colors.
 
 **Acceptance Criteria**:
+
 - [ ] `content/data/tech-badges.json` with common technologies
 - [ ] Each entry: slug, label, color, icon (simple-icons name)
 - [ ] Include: React, TypeScript, Python, Next.js, Node.js, Tailwind, etc.
@@ -253,9 +295,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BADGE-003: Create BadgeGroup Component
+
 **Description**: Component to display multiple badges together.
 
 **Acceptance Criteria**:
+
 - [ ] BadgeGroup in `components/ui/BadgeGroup.tsx`
 - [ ] Props: badges array, maxVisible (with "+N more")
 - [ ] Proper spacing between badges
@@ -264,9 +308,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BADGE-004: Create Status and Content Badge Presets
+
 **Description**: Define preset badges for status and content types.
 
 **Acceptance Criteria**:
+
 - [ ] Status badges: New (green), Updated (blue), Popular (purple), WIP (amber), Archived (gray)
 - [ ] Content badges: Tutorial, Deep Dive, Quick Tip, Series
 - [ ] Level badges: Beginner, Intermediate, Advanced
@@ -277,9 +323,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ## Epic 5: MDX Pipeline (5 stories)
 
 ### MDX-001: Install MDX Dependencies
+
 **Description**: Install and configure packages for MDX processing.
 
 **Acceptance Criteria**:
+
 - [ ] Install: `next-mdx-remote`, `gray-matter`, `shiki`
 - [ ] Install: `reading-time`, `rehype-slug`, `rehype-autolink-headings`
 - [ ] All packages at latest stable versions
@@ -287,9 +335,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### MDX-002: Create MDX Processing Utilities
+
 **Description**: Build utility functions to parse and render MDX content.
 
 **Acceptance Criteria**:
+
 - [ ] `lib/mdx.ts` with functions:
   - `getMdxContent(slug, type)` - read and parse single file
   - `getAllContent(type)` - list all content of a type
@@ -301,9 +351,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### MDX-003: Configure Shiki Syntax Highlighting
+
 **Description**: Set up Shiki for code block syntax highlighting.
 
 **Acceptance Criteria**:
+
 - [ ] Shiki highlighter initialized
 - [ ] Theme: `github-dark` for dark mode, `github-light` for light
 - [ ] Common languages enabled: js, ts, tsx, jsx, python, bash, json, yaml, css
@@ -312,9 +364,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### MDX-004: Create Custom MDX Components
+
 **Description**: Build React components for rendering MDX elements.
 
 **Acceptance Criteria**:
+
 - [ ] `components/mdx/` with custom components:
   - Enhanced code blocks with copy button
   - Responsive images with Next.js Image
@@ -325,9 +379,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### MDX-005: Create CopyCodeButton Component
+
 **Description**: Add copy-to-clipboard functionality for code blocks.
 
 **Acceptance Criteria**:
+
 - [ ] CopyCodeButton in `components/ui/CopyCodeButton.tsx`
 - [ ] Uses Clipboard API
 - [ ] Visual feedback on copy (checkmark icon, "Copied!")
@@ -340,9 +396,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ## Epic 6: Homepage (5 stories)
 
 ### HOME-001: Create Homepage Layout
+
 **Description**: Build the homepage structure with sections.
 
 **Acceptance Criteria**:
+
 - [ ] `app/page.tsx` with section containers
 - [ ] Sections: Hero, Skills Preview, Recent Posts, Featured Projects
 - [ ] Responsive grid layouts
@@ -351,9 +409,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### HOME-002: Build Hero Section
+
 **Description**: Create the hero section with name, title, and intro.
 
 **Acceptance Criteria**:
+
 - [ ] Large heading with name
 - [ ] Subtitle with role/title
 - [ ] Brief intro paragraph
@@ -363,9 +423,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### HOME-003: Create Skills Preview Section
+
 **Description**: Visual display of key technologies/skills.
 
 **Acceptance Criteria**:
+
 - [ ] Grid of tech badges
 - [ ] Grouped by category (Frontend, Backend, Tools)
 - [ ] Hover effects on badges
@@ -374,9 +436,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### HOME-004: Build Recent Posts Preview
+
 **Description**: Display 3-4 most recent blog posts.
 
 **Acceptance Criteria**:
+
 - [ ] Fetch latest published posts
 - [ ] PostCard component with title, date, description, badges
 - [ ] "View all posts" link
@@ -385,9 +449,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### HOME-005: Build Featured Projects Preview
+
 **Description**: Display featured projects grid.
 
 **Acceptance Criteria**:
+
 - [ ] Fetch projects with `featured: true`
 - [ ] ProjectCard with title, description, tech badges
 - [ ] Links to project detail or external URL
@@ -398,9 +464,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ## Epic 7: Blog System (10 stories)
 
 ### BLOG-001: Create Blog Listing Page
+
 **Description**: Build the main blog index page.
 
 **Acceptance Criteria**:
+
 - [ ] `app/blog/page.tsx` listing all published posts
 - [ ] Posts sorted by date (newest first)
 - [ ] PostCard for each post with metadata
@@ -409,9 +477,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-002: Create PostCard Component
+
 **Description**: Card component for blog post previews.
 
 **Acceptance Criteria**:
+
 - [ ] `components/blog/PostCard.tsx`
 - [ ] Props: post object with frontmatter
 - [ ] Displays: title, date, description, tags, badges
@@ -422,9 +492,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-003: Create Blog Post Detail Page
+
 **Description**: Dynamic route for individual blog posts.
 
 **Acceptance Criteria**:
+
 - [ ] `app/blog/[slug]/page.tsx`
 - [ ] Fetch post by slug
 - [ ] Render MDX content with custom components
@@ -435,9 +507,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-004: Create ReadingProgress Component
+
 **Description**: Progress bar showing reading position.
 
 **Acceptance Criteria**:
+
 - [ ] `components/blog/ReadingProgress.tsx`
 - [ ] Fixed position at top of viewport
 - [ ] Width based on scroll percentage
@@ -448,9 +522,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-005: Create TableOfContents Component
+
 **Description**: Auto-generated table of contents from headings.
 
 **Acceptance Criteria**:
+
 - [ ] `components/blog/TableOfContents.tsx`
 - [ ] Extract headings from MDX content
 - [ ] Nested list for h2/h3 hierarchy
@@ -461,9 +537,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-006: Implement Related Posts Component
+
 **Description**: Show related posts based on tags and manual selection.
 
 **Acceptance Criteria**:
+
 - [ ] `components/blog/RelatedPosts.tsx`
 - [ ] Props: currentPost, allPosts
 - [ ] Priority: manual `relatedPosts` frontmatter
@@ -474,9 +552,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-007: Implement Series Support
+
 **Description**: Add blog series functionality for multi-part posts.
 
 **Acceptance Criteria**:
+
 - [ ] Posts can specify `series` and `seriesOrder` in frontmatter
 - [ ] `lib/blog.ts` function to get all posts in a series
 - [ ] Series sorted by seriesOrder
@@ -484,9 +564,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-008: Create SeriesNav Component
+
 **Description**: Navigation between posts in a series.
 
 **Acceptance Criteria**:
+
 - [ ] `components/blog/SeriesNav.tsx`
 - [ ] Shows series title and current position (e.g., "Part 2 of 5")
 - [ ] Links to previous/next posts in series
@@ -496,9 +578,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-009: Create Series Listing Page
+
 **Description**: Page showing all blog series.
 
 **Acceptance Criteria**:
+
 - [ ] `app/blog/series/page.tsx`
 - [ ] List all series with metadata
 - [ ] Post count per series
@@ -507,9 +591,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### BLOG-010: Create Sample Blog Post Content
+
 **Description**: Create 2-3 sample MDX blog posts for testing.
 
 **Acceptance Criteria**:
+
 - [ ] At least one standalone post
 - [ ] At least one series (2 posts)
 - [ ] Various frontmatter configurations
@@ -521,9 +607,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ## Epic 8: Contact System (8 stories)
 
 ### CONTACT-001: Create Contact Page Layout
+
 **Description**: Build the contact page with form container.
 
 **Acceptance Criteria**:
+
 - [ ] `app/contact/page.tsx`
 - [ ] Page title and introduction text
 - [ ] Form container with proper styling
@@ -532,9 +620,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### CONTACT-002: Create ContactForm Component
+
 **Description**: Build the contact form with validation.
 
 **Acceptance Criteria**:
+
 - [ ] `components/contact/ContactForm.tsx`
 - [ ] Fields: name, email, subject (dropdown), message
 - [ ] Client-side validation (required fields, email format)
@@ -545,9 +635,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### CONTACT-003: Create Database Schema for Contacts
+
 **Description**: Set up database table for contact submissions.
 
 **Acceptance Criteria**:
+
 - [ ] `lib/db.ts` with database client setup
 - [ ] SQL schema for `contact_submissions` table
 - [ ] Fields: id, name, email, subject, message, created_at, synced_to_obsidian
@@ -556,9 +648,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### CONTACT-004: Create Contact API Route Handler
+
 **Description**: Build the API endpoint for contact form submissions.
 
 **Acceptance Criteria**:
+
 - [ ] `app/api/contact/route.ts` with POST handler
 - [ ] Input validation and sanitization
 - [ ] Honeypot check (reject if filled)
@@ -569,9 +663,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### CONTACT-005: Implement Rate Limiting
+
 **Description**: Add IP-based rate limiting using Vercel KV.
 
 **Acceptance Criteria**:
+
 - [ ] `lib/rate-limit.ts` utility
 - [ ] Limits: 5/hour, 20/day per IP
 - [ ] Uses Vercel KV for storage
@@ -582,9 +678,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### CONTACT-006: Integrate Database Saving
+
 **Description**: Save contact submissions to Vercel Postgres.
 
 **Acceptance Criteria**:
+
 - [ ] Contact API saves to database on valid submission
 - [ ] Proper error handling for DB failures
 - [ ] Returns submission ID in response
@@ -592,9 +690,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### CONTACT-007: Implement Email Notifications
+
 **Description**: Send email notification on contact submission.
 
 **Acceptance Criteria**:
+
 - [ ] `lib/email.ts` with Resend client
 - [ ] Email template for contact notifications
 - [ ] Includes all submission details
@@ -605,9 +705,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### CONTACT-008: Create Contact Form Success/Error States
+
 **Description**: Polish the form UX with proper feedback states.
 
 **Acceptance Criteria**:
+
 - [ ] Loading spinner during submission
 - [ ] Success message with reset option
 - [ ] Error message with retry option
@@ -619,9 +721,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ## Epic 9: Deployment (2 stories)
 
 ### DEPLOY-001: Configure Vercel Deployment
+
 **Description**: Set up production deployment configuration.
 
 **Acceptance Criteria**:
+
 - [ ] `vercel.json` with any needed configuration
 - [ ] Environment variables set in Vercel dashboard
 - [ ] Preview deployments working for PRs
@@ -630,9 +734,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 ---
 
 ### DEPLOY-002: Verify Production Deployment
+
 **Description**: Test all features in production environment.
 
 **Acceptance Criteria**:
+
 - [ ] All pages render correctly
 - [ ] Theme toggle works
 - [ ] Blog posts display with syntax highlighting
@@ -679,21 +785,26 @@ All other stories → DEPLOY-001 (deploy after implementation)
 ## Suggested Sprint Groupings
 
 ### Sprint 1: Infrastructure & Foundation
+
 - INFRA-001 through INFRA-007
 - FOUND-001 through FOUND-006
 
 ### Sprint 2: Layout & Theme System
+
 - LAYOUT-001 through LAYOUT-006
 - BADGE-001 through BADGE-004
 
 ### Sprint 3: MDX & Homepage
+
 - MDX-001 through MDX-005
 - HOME-001 through HOME-005
 
 ### Sprint 4: Blog System
+
 - BLOG-001 through BLOG-010
 
 ### Sprint 5: Contact System & Deployment
+
 - CONTACT-001 through CONTACT-008
 - DEPLOY-001, DEPLOY-002
 
