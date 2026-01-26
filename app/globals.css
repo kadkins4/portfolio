@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --code-bg: #18181b; /* zinc-900 */
+  --code-fg: #4ade80; /* green-400 */
+  --code-border: #3f3f46; /* zinc-700 */
 }
 
 @theme inline {
