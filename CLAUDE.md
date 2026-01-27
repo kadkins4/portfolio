@@ -124,3 +124,20 @@ CSS variables for theme colors with next-themes. Dark mode default with light mo
 - **Rate limiting**: Contact form limited to 5/hour, 20/day per IP via Vercel KV
 - **Spam prevention**: Honeypot field on contact form
 - **Badge system**: Tech badges with simple-icons colors, status badges (new/updated/popular/wip/archived)
+
+## Research-Plan-Implement Framework
+
+This repository uses the Research-Plan-Implement framework with the following workflow commands:
+
+1. `/1_research_codebase` - Deep codebase exploration with parallel AI agents
+2. `/2_create_plan` - Create detailed, phased implementation plans
+3. `/3_validate_plan` - Verify implementation matches plan
+4. `/4_implement_plan` - Execute plan systematically
+5. `/5_save_progress` - Save work session state
+6. `/6_resume_work` - Resume from saved session
+7. `/7_research_cloud` - Analyze cloud infrastructure (READ-ONLY)
+
+Research findings are saved in `thoughts/shared/research/`
+Implementation plans are saved in `thoughts/shared/plans/`
+Session summaries are saved in `thoughts/shared/sessions/`
+Cloud analyses are saved in `thoughts/shared/cloud/`
