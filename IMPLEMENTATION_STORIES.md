@@ -132,11 +132,11 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 
 **Acceptance Criteria**:
 
-- [ ] `next-themes` package installed
-- [ ] ThemeProvider wrapper created
-- [ ] Default theme set to "dark"
-- [ ] System preference detection enabled
-- [ ] No hydration mismatch errors
+- [x] `next-themes` package installed
+- [x] ThemeProvider wrapper created
+- [x] Default theme set to "dark"
+- [x] System preference detection enabled
+- [x] No hydration mismatch errors
 
 ---
 

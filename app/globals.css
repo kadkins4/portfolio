@@ -108,8 +108,41 @@
   }
 }
 
-/* Typography dark mode support */
+/* Class-based dark mode for next-themes */
 .dark {
+  /* Base colors */
+  --background: #09090b;
+  --foreground: #fafafa;
+
+  /* Muted */
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+
+  /* Card */
+  --card: #09090b;
+  --card-foreground: #fafafa;
+
+  /* Border */
+  --border: #27272a;
+  --input: #27272a;
+
+  /* Accent */
+  --accent: #22c55e;
+  --accent-foreground: #09090b;
+
+  /* Destructive */
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+
+  /* Code */
+  --code-bg: #18181b;
+  --code-text: #4ade80;
+  --code-border: #3f3f46;
+
+  /* Ring */
+  --ring: #d4d4d8;
+
+  /* Typography prose variables */
   --tw-prose-body: var(--foreground);
   --tw-prose-headings: var(--foreground);
   --tw-prose-links: var(--accent);
@@ -118,6 +151,41 @@
   --tw-prose-pre-code: var(--code-text);
   --tw-prose-quotes: var(--muted-foreground);
   --tw-prose-quote-borders: var(--border);
+}
+
+/* Class-based light mode for next-themes */
+.light {
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #09090b;
+
+  /* Muted */
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+
+  /* Card */
+  --card: #ffffff;
+  --card-foreground: #09090b;
+
+  /* Border */
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+
+  /* Accent */
+  --accent: #16a34a;
+  --accent-foreground: #ffffff;
+
+  /* Destructive */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  /* Code */
+  --code-bg: #f4f4f5;
+  --code-text: #16a34a;
+  --code-border: #e4e4e7;
+
+  /* Ring */
+  --ring: #18181b;
 }
 
 body {
