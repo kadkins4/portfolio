@@ -24,13 +24,26 @@ Personal portfolio website for kendalladkins.dev featuring blog posts, project s
 
 ## Build Commands
 
+**Version Management**: This project uses [mise](https://mise.jdx.dev) to manage Node.js and pnpm versions.
+
 ```bash
+# First-time setup
+mise install              # Install Node.js 22.15.0 and pnpm 9
+
+# Development
 pnpm install              # Install dependencies
 pnpm dev                  # Start dev server (localhost:3000)
 pnpm build                # Production build
 pnpm start                # Start production server
 pnpm lint                 # Run ESLint
 pnpm test                 # Run tests
+
+# Or use mise tasks
+mise run install          # Install dependencies
+mise run dev              # Start dev server
+mise run build            # Production build
+mise run lint             # Run ESLint
+mise run format           # Format code with Prettier
 ```
 
 ## Architecture

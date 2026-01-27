@@ -1,0 +1,32 @@
+# mise configuration for kendalladkins.dev portfolio
+# Install mise: https://mise.jdx.dev/getting-started.html
+# Usage: mise install
+
+[tools]
+node = "22.15.0"  # Next.js 16.1.4 requires Node.js 18.18.0+
+pnpm = "9"        # Package manager
+
+[env]
+# Automatically use pnpm for this project
+_.file = ".env"
+_.path = "./.env.local"
+
+[tasks.install]
+description = "Install dependencies"
+run = "pnpm install"
+
+[tasks.dev]
+description = "Start development server"
+run = "pnpm dev"
+
+[tasks.build]
+description = "Build for production"
+run = "pnpm build"
+
+[tasks.lint]
+description = "Run linter"
+run = "pnpm lint"
+
+[tasks.format]
+description = "Format code with Prettier"
+run = "pnpm format"
