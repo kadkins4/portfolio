@@ -119,10 +119,10 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 
 **Acceptance Criteria**:
 
-- [ ] `tailwind.config.ts` extended with custom colors
-- [ ] CSS variables defined in `globals.css` for dark/light themes
-- [ ] Typography plugin installed (`@tailwindcss/typography`)
-- [ ] Custom fonts configured (JetBrains Mono, Inter)
+- [x] `tailwind.config.ts` extended with custom colors
+- [x] CSS variables defined in `globals.css` for dark/light themes
+- [x] Typography plugin installed (`@tailwindcss/typography`)
+- [x] Custom fonts configured (Geist Sans, Geist Mono)
 
 ---
 
