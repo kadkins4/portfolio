@@ -2,12 +2,13 @@ import SequentialTyping from '@/app/components/SequentialTyping'
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-5 min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-col gap-5 min-h-screen w-full items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <SequentialTyping
         items={[
           {
             text: `$ cd ~/kendall-adkins && ./portfolio\n\n> ready at https://kendalladkins.dev`,
             isCodeBlock: true,
+            className: 'min-w-[380px]',
             persist: false,
             speed: 75,
             pauseBetween: 1500,

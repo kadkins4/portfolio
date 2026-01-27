@@ -68,7 +68,7 @@ export default function SequentialTyping({
           return (
             <div key={index}>
               {item.isCodeBlock ? (
-                <CodeBlock>{item.text}</CodeBlock>
+                <CodeBlock className={item.className}>{item.text}</CodeBlock>
               ) : (
                 <p className={item.className || 'text-center'}>
                   <em>{item.text}</em>
@@ -82,7 +82,7 @@ export default function SequentialTyping({
           return (
             <div key={index}>
               {item.isCodeBlock ? (
-                <CodeBlock>
+                <CodeBlock className={item.className}>
                   {displayedText}
                   <span className="animate-pulse">▋</span>
                 </CodeBlock>
