@@ -172,10 +172,10 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 
 **Acceptance Criteria**:
 
-- [ ] ESLint config extended with recommended rules
-- [ ] Prettier installed and configured
-- [ ] Scripts added: `pnpm lint`, `pnpm format`
-- [ ] Editor config file created
+- [x] ESLint config extended with recommended rules
+- [x] Prettier installed and configured
+- [x] Scripts added: `pnpm lint`, `pnpm format`
+- [x] Editor config file created
 
 ---
 

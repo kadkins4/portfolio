@@ -1,6 +1,7 @@
 # Claude Code Research-Plan-Implement Framework Playbook
 
 ## Table of Contents
+
 1. [Overview](#overview)
 2. [Quick Start](#quick-start)
 3. [Framework Architecture](#framework-architecture)
@@ -15,12 +16,14 @@
 ## Overview
 
 The Research-Plan-Implement Framework is a structured approach to AI-assisted software development that emphasizes:
+
 - **Thorough research** before coding
 - **Detailed planning** with clear phases
 - **Systematic implementation** with verification
 - **Persistent context** through markdown documentation
 
 ### Core Benefits
+
 - 🔍 **Deep Understanding**: Research phase ensures complete context
 - 📋 **Clear Planning**: Detailed plans prevent scope creep
 - ✅ **Quality Assurance**: Built-in validation at each step
@@ -33,6 +36,7 @@ The Research-Plan-Implement Framework is a structured approach to AI-assisted so
 ### Installation
 
 1. **Copy framework files to your repository:**
+
 ```bash
 # From the .claude-framework-adoption directory
 cp -r .claude your-repo/
@@ -40,6 +44,7 @@ cp -r thoughts your-repo/
 ```
 
 2. **Customize for your project:**
+
 - Edit `.claude/commands/*.md` to match your tooling
 - Update agent descriptions if needed
 - Add project-specific CLAUDE.md
@@ -47,6 +52,7 @@ cp -r thoughts your-repo/
 3. **Test the workflow:**
 
 **Standard Approach:**
+
 ```
 /1_research_codebase
 > How does user authentication work in this codebase?
@@ -59,6 +65,7 @@ cp -r thoughts your-repo/
 ```
 
 **Test-Driven Approach:**
+
 ```
 /8_define_test_cases
 > Two-factor authentication for user login
@@ -106,18 +113,21 @@ your-repo/
 **Purpose**: Comprehensive exploration and understanding
 
 **Process**:
+
 1. Invoke command with research question
 2. AI spawns parallel agents to investigate
 3. Findings compiled into structured document
 4. Saved to `thoughts/shared/research/`
 
 **Example**:
+
 ```
 /1_research_codebase
 > How does the payment processing system work?
 ```
 
 **Output**: Detailed research document with:
+
 - Code references (file:line)
 - Architecture insights
 - Patterns and conventions
@@ -128,35 +138,44 @@ your-repo/
 **Purpose**: Create detailed, phased implementation plan
 
 **Process**:
+
 1. Read requirements and research
 2. Interactive planning with user
 3. Generate phased approach
 4. Save to `thoughts/shared/plans/`
 
 **Example**:
+
 ```
 /2_create_plan
 > Add Stripe payment integration based on the research
 ```
 
 **Plan Structure**:
+
 ```markdown
 # Feature Implementation Plan
 
 ## Phase 1: Database Setup
+
 ### Changes Required:
+
 - Add payment tables
 - Migration scripts
 
 ### Success Criteria:
+
 #### Automated:
+
 - [ ] Migration runs successfully
 - [ ] Tests pass
 
 #### Manual:
+
 - [ ] Data integrity verified
 
 ## Phase 2: API Integration
+
 [...]
 ```
 
@@ -165,18 +184,21 @@ your-repo/
 **Purpose**: Execute plan systematically
 
 **Process**:
+
 1. Read plan and track with todos
 2. Implement phase by phase
 3. Run verification after each phase
 4. Update plan checkboxes
 
 **Example**:
+
 ```
 /4_implement_plan
 > thoughts/shared/plans/stripe_integration.md
 ```
 
 **Progress Tracking**:
+
 - Uses checkboxes in plan
 - TodoWrite for task management
 - Communicates blockers clearly
@@ -186,6 +208,7 @@ your-repo/
 **Purpose**: Verify implementation matches plan
 
 **Process**:
+
 1. Review git changes
 2. Run all automated checks
 3. Generate validation report
@@ -193,12 +216,14 @@ your-repo/
 5. Prepare for manual commit process
 
 **Example**:
+
 ```
 /3_validate_plan
 > Validate the Stripe integration implementation
 ```
 
 **Report Includes**:
+
 - Implementation status
 - Test results
 - Code review findings
@@ -209,6 +234,7 @@ your-repo/
 **Purpose**: Design acceptance test cases before implementation
 
 **Process**:
+
 1. Invoke command with feature description
 2. AI researches existing test patterns in codebase
 3. Defines test cases in structured comment format
@@ -216,13 +242,16 @@ your-repo/
 5. Notes which DSL functions exist vs. need creation
 
 **Example**:
+
 ```
 /8_define_test_cases
 > Partner enrollment workflow when ordering kit products
 ```
 
 **Output**:
+
 1. **Test Case Definitions**: All scenarios in comment format:
+
 ```javascript
 // 1. New Customer Orders Partner Kit
 
@@ -239,6 +268,7 @@ your-repo/
 3. **Pattern Notes**: How tests align with existing patterns
 
 **Test Structure**:
+
 - Setup phase (arrange state)
 - Blank line
 - Action phase (trigger behavior)
@@ -247,6 +277,7 @@ your-repo/
 - No "Given/When/Then" labels - implicit structure
 
 **Coverage Areas**:
+
 - Happy paths
 - Edge cases
 - Error scenarios
@@ -260,23 +291,27 @@ your-repo/
 ### Core Workflow Commands
 
 ### `/1_research_codebase`
+
 - **Purpose**: Deep dive into codebase
 - **Input**: Research question
 - **Output**: Research document
 - **Agents Used**: All locator/analyzer agents
 
 ### `/2_create_plan`
+
 - **Purpose**: Create implementation plan
 - **Input**: Requirements/ticket
 - **Output**: Phased plan document
 - **Interactive**: Yes
 
 ### `/3_validate_plan`
+
 - **Purpose**: Verify implementation
 - **Input**: Plan path (optional)
 - **Output**: Validation report
 
 ### `/4_implement_plan`
+
 - **Purpose**: Execute implementation
 - **Input**: Plan path
 - **Output**: Completed implementation
@@ -286,12 +321,14 @@ your-repo/
 The framework supports saving and resuming work through persistent documentation:
 
 ### `/5_save_progress`
+
 - **Purpose**: Save work progress and context
 - **Input**: Current work state
 - **Output**: Session summary and checkpoint
 - **Creates**: `thoughts/shared/sessions/` document
 
 ### `/6_resume_work`
+
 - **Purpose**: Resume previously saved work
 - **Input**: Session summary path or auto-discover
 - **Output**: Restored context and continuation
@@ -300,6 +337,7 @@ The framework supports saving and resuming work through persistent documentation
 ### Saving Progress (`/5_save_progress`)
 
 When you need to pause work:
+
 ```
 /5_save_progress
 > Need to stop working on the payment feature
@@ -313,6 +351,7 @@ When you need to pause work:
 ### Resuming Work (`/6_resume_work`)
 
 To continue where you left off:
+
 ```
 /6_resume_work
 > thoughts/shared/sessions/2025-01-06_payment_feature.md
@@ -327,6 +366,7 @@ To continue where you left off:
 ### Progress Tracking
 
 Plans track progress with checkboxes:
+
 - `- [ ]` Not started
 - `- [x]` Completed
 - Progress checkpoints document partial completion
@@ -336,6 +376,7 @@ When resuming, implementation continues from first unchecked item or documented 
 ### Session Documents
 
 Session summaries include:
+
 - Work completed in session
 - Current state and blockers
 - Next steps to continue
@@ -345,12 +386,14 @@ Session summaries include:
 This enables seamless context switching between features or across days/weeks.
 
 ### `/7_research_cloud`
+
 - **Purpose**: Analyze cloud infrastructure (READ-ONLY)
 - **Input**: Cloud platform and focus area
 - **Output**: Infrastructure analysis document
 - **Creates**: `thoughts/shared/cloud/` documents
 
 ### `/8_define_test_cases`
+
 - **Purpose**: Design acceptance test cases using DSL approach
 - **Input**: Feature/functionality to test
 - **Output**: Test case definitions in comments + required DSL functions
@@ -360,16 +403,19 @@ This enables seamless context switching between features or across days/weeks.
 ## Agent Reference
 
 ### codebase-locator
+
 - **Role**: Find relevant files
 - **Tools**: Grep, Glob, LS
 - **Returns**: Categorized file listings
 
 ### codebase-analyzer
+
 - **Role**: Understand implementation
 - **Tools**: Read, Grep, Glob, LS
 - **Returns**: Detailed code analysis
 
 ### codebase-pattern-finder
+
 - **Role**: Find examples to follow
 - **Tools**: Grep, Glob, Read, LS
 - **Returns**: Code patterns and examples
@@ -377,11 +423,13 @@ This enables seamless context switching between features or across days/weeks.
 ## Best Practices
 
 ### 1. Research First
+
 - Always start with research for complex features
 - Don't skip research even if you think you know the codebase
 - Research documents become valuable references
 
 ### 2. Plan Thoroughly
+
 - Break work into testable phases
 - Include specific success criteria
 - Document what's NOT in scope
@@ -389,22 +437,26 @@ This enables seamless context switching between features or across days/weeks.
 - Consider how work will be committed
 
 ### 3. Implement Systematically
+
 - Complete one phase before starting next
 - Run tests after each phase
 - Update plan checkboxes as you go
 - Communicate blockers immediately
 
 ### 4. Document Everything
+
 - Research findings persist in `thoughts/`
 - Plans serve as technical specs
 - Session summaries maintain continuity
 
 ### 5. Use Parallel Agents
+
 - Spawn multiple agents for research
 - Let them work simultaneously
 - Combine findings for comprehensive view
 
 ### 6. Design Tests Early
+
 - Define test cases before implementing features
 - Follow existing test patterns and DSL conventions
 - Use comment-first approach for test specifications
@@ -416,25 +468,32 @@ This enables seamless context switching between features or across days/weeks.
 ### Adapting Commands
 
 1. **Remove framework-specific references:**
+
 ```markdown
 # Before (cli project specific)
+
 Run `cli thoughts sync`
 
 # After (Generic)
+
 Save to thoughts/shared/research/
 ```
 
 2. **Adjust tool commands:**
+
 ```markdown
 # Match your project's tooling
+
 - Tests: `npm test` → `yarn test`
 - Lint: `npm run lint` → `make lint`
 - Build: `npm run build` → `cargo build`
 ```
 
 3. **Customize success criteria:**
+
 ```markdown
 # Add project-specific checks
+
 - [ ] Security scan passes: `npm audit`
 - [ ] Performance benchmarks met
 - [ ] Documentation generated
@@ -462,16 +521,19 @@ Add instructions for your project:
 # Project Conventions
 
 ## Testing
+
 - Always write tests first (TDD)
 - Minimum 80% coverage required
 - Use Jest for unit tests
 
 ## Code Style
+
 - Use Prettier formatting
 - Follow ESLint rules
 - Prefer functional programming
 
 ## Git Workflow
+
 - Feature branches from develop
 - Squash commits on merge
 - Conventional commit messages
@@ -482,21 +544,25 @@ Add instructions for your project:
 ### Common Issues
 
 **Q: Research phase taking too long?**
+
 - A: Limit scope of research question
 - Focus on specific component/feature
 - Use more targeted queries
 
 **Q: Plan too vague?**
+
 - A: Request more specific details
 - Ask for code examples
 - Ensure success criteria are measurable
 
 **Q: Implementation doesn't match plan?**
+
 - A: Stop and communicate mismatch
 - Update plan if needed
 - Validate assumptions with research
 
 **Q: How to commit changes?**
+
 - A: Use git commands directly after validation
 - Group related changes logically
 - Write clear commit messages following project conventions
