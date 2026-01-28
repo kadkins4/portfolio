@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { CodeBlock } from '@/app/components/CodeBlock'
+import { CodeBlock } from '@/components/ui/CodeBlock'
 import type { TextItem } from '@/app/types'
 
 export type { TextItem }

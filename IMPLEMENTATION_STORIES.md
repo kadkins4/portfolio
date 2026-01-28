@@ -159,10 +159,10 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 
 **Acceptance Criteria**:
 
-- [ ] `components/` with subdirectories: ui, layout, blog, mdx, contact
-- [ ] `lib/` directory created
-- [ ] `content/` with subdirectories: blog, projects, data
-- [ ] `public/images/` directory structure
+- [x] `components/` with subdirectories: ui, layout, blog, mdx, contact
+- [x] `lib/` directory created
+- [x] `content/` with subdirectories: blog, projects, data
+- [x] `public/images/` directory structure
 
 ---
 

@@ -1,4 +1,4 @@
-import SequentialTyping from '@/app/components/SequentialTyping'
+import SequentialTyping from '@/components/ui/SequentialTyping'
 
 export default function Home() {
   return (
