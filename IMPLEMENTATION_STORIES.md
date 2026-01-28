@@ -146,10 +146,10 @@ Detailed story breakdown for the MVP portfolio website. Each story is sized for 
 
 **Acceptance Criteria**:
 
-- [ ] `app/layout.tsx` wraps children with ThemeProvider
-- [ ] Metadata configured (title, description)
-- [ ] Font loading optimized
-- [ ] Suppress hydration warning on html element
+- [x] `app/layout.tsx` wraps children with ThemeProvider
+- [x] Metadata configured (title, description)
+- [x] Font loading optimized
+- [x] Suppress hydration warning on html element
 
 ---
 
