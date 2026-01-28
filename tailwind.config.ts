@@ -3,7 +3,7 @@ import typography from '@tailwindcss/typography'
 
 export default {
   darkMode: 'class',
-  content: ['./app/**/*.{ts,tsx}'],
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   plugins: [typography],
   theme: {
     extend: {
